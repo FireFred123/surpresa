@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vivendo a vida mais feliz há um pouco mais de...</title>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Quicksand', sans-serif;
+      background: linear-gradient(to right, #3b0a57, #4b0055);
+      color: #f8f8f8;
+      overflow-x: hidden;
+    }
+
+    .start-screen {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: #2c003e;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      z-index: 9999;
+      transition: opacity 1s ease;
+    }
+
+    .start-screen button {
+      padding: 14px 30px;
+      font-size: 1.2rem;
+      background-color: #a259ff;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    h1 {
+      font-family: 'Pacifico', cursive;
+      text-align: center;
+      font-size: 2rem;
+      margin: 20px;
+      color: #d3a3ff;
+    }
+
+    .heart {
+      font-size: 2rem;
+      text-align: center;
+      animation: beat 1s infinite;
+      color: #ffccff;
+    }
+
+    @keyframes beat {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+
+    #timer {
+      text-align: center;
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+      font-weight: bold;
+      color: #ffffff;
+    }
+
+    .carousel {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 10px;
+      padding: 20px;
+      background-color: #2e003e;
+    }
+
+    .carousel::-webkit-scrollbar {
+      display: none;
+    }
+
+    .photo-item {
+      scroll-snap-align: center;
+      flex-shrink: 0;
+      width: 80%;
+      max-width: 300px;
+      text-align: center;
+    }
+
+    .photo-item img {
+      width: 100%;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      margin-bottom: 8px;
+    }
+
+    .photo-caption {
+      font-size: 0.95rem;
+      font-style: italic;
+      color: #dcd6f7;
+    }
+
+    .text {
+      margin-top: 30px;
+      background-color: #3e2268;
+      border-radius: 12px;
+      padding: 20px;
+      margin: 20px;
+      font-size: 1.1rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      color: #f3eaff;
+    }
+
+    .music-btn {
+      display: block;
+      margin: 0 auto 20px;
+      background-color: #a259ff;
+      color: white;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: background-color 0.3s ease;
+    }
+
+    .music-btn:hover {
+      background-color: #8933d3;
+    }
+
+    @media (min-width: 768px) {
+      h1 { font-size: 2.5rem; }
+      #timer { font-size: 1.3rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="start-screen" id="startScreen">
+    <h1> 🎁</h1>
+    <button onclick="revealSurprise(); toggleMusic()">Surpresa 💌</button>
+  </div>
+
+  <div class="heart">❤️</div>
+  <h1>Vivendo a vida mais feliz há um pouco mais de:</h1>
+  <div id="timer"></div>
+
+  <button class="music-btn" onclick="toggleMusic()">Tocar / Parar Música</button>
+  <audio id="bgMusic" loop autoplay>
+    <source src="AmorEuTeEncontrei.mp3" type="audio/mp3">
+    Seu navegador não suporta áudio.
+  </audio>
+
+  <div class="carousel">
+    <div class="photo-item">
+      <img src="fotos/Foto0.jpg" alt="Foto 0">
+      <div class="photo-caption">Amo a gente:</div>
+    </div>
+    <div class="photo-item">
+      <img src="fotos/Foto1.jpg" alt="Foto 1">
+      <div class="photo-caption">Amo a minha toadzinha 🍄,</div>
+    </div>
+    <div class="photo-item">
+      <img src="fotos/Foto2.jpg" alt="Foto 2">
+      <div class="photo-caption">minha esfomeada 🍽️,</div>
+    </div>
+    <div class="photo-item">
+      <img src="fotos/Foto3.jpg" alt="Foto 3">
+      <div class="photo-caption">Minha retardada 🤪,</div>
+    </div>
+    <div class="photo-item">
+      <img src="fotos/Foto4.jpg" alt="Foto 4">
+      <div class="photo-caption">Minha gamer 🎮,</div>
+    </div>
+    <div class="photo-item">
+      <img src="fotos/Foto5.jpg" alt="Foto 5">
+      <div class="photo-caption">Minha princesa 👸,</div>
+    </div>
+    <div class="photo-item">
+      <img src="fotos/Foto6.jpg" alt="Foto 6">
+      <div class="photo-caption">Minha paz ✌️,</div>
+    </div>
+    <div class="photo-item">
+      <img src="fotos/Foto7.jpg" alt="Foto 7">
+      <div class="photo-caption">Minha fofa 🎄,</div>
+    </div>
+    <div class="photo-item">
+      <img src="fotos/Foto8.jpg" alt="Foto 8">
+      <div class="photo-caption">Minha linda 🥺,</div>
+    </div>
+    <div class="photo-item">
+      <img src="fotos/Foto9.jpg" alt="Foto 9">
+      <div class="photo-caption">O início dos meus gastos kkkkkkkkk 💸</div>
+    </div>
+    <div class="photo-item">
+      <img src="fotos/Foto10.jpg" alt="Foto 10">
+      <div class="photo-caption">Amo nosso jeito ❤️,</div>
+    </div>
+    <div class="photo-item">
+      <img src="fotos/Foto11.jpg" alt="Foto 11">
+      <div class="photo-caption">nosso autismo 💙,</div>
+    </div>
+    <div class="photo-item">
+      <img src="fotos/Foto12.jpg" alt="Foto 12">
+      <div class="photo-caption">nossa parceria 💗,</div>
+    </div>
+    <div class="photo-item">
+      <img src="fotos/Foto13.jpg" alt="Foto 13">
+      <div class="photo-caption">nossos momentos ❤️,</div>
+    </div>
+    <div class="photo-item">
+      <img src="fotos/Foto14.jpg" alt="Foto 14">
+      <div class="photo-caption">nossa sintonia 💙,</div>
+    </div>
+    <div class="photo-item">
+      <img src="fotos/Foto15.jpg" alt="Foto 15">
+      <div class="photo-caption">nossa felicidade 💗,</div>
+    </div>
+    <div class="photo-item">
+      <img src="fotos/Foto16.jpg" alt="Foto 16">
+      <div class="photo-caption">nossa rotina ❤️,</div>
+    </div>
+    <div class="photo-item">
+      <img src="fotos/Foto17.jpg" alt="Foto 17">
+      <div class="photo-caption">nossas comemorações 💙.</div>
+    </div>
+
+    <!-- Adicione mais .photo-item conforme quiser -->
+  </div>
+
+
+  <div class="text">
+    <p>
+      Xuxuzinha eu sou mt mt feliz de ter te conhecido, você já faz parte da minha vida em um nível que por algum motivo você não consegue acreditar. Não consigo me imaginar mais sem você. Tudo que eu quero fazer envolve você ou vejo você do meu lado(Morar aqui em sjc, ter nossos gatinhos, ter nosso setup coladinho, viajar pra europe depois de Bonito). Espero que você entenda que por mais que eu seja meio atrapalhado, e um pouco frio as vezes, eu to sempre tentando te fazer sorrir, seja te zoando e rindo com você ou fazendo coisas que sei que te fazem feliz. Essas duas semanas longe da xuxuzinha foram muito sofridas por dormir sozinho sem ter a xuxuzinha pra compartilhar o sono, o almoço, as risadas e as brincadeiras. Graças a Deus hoje vamos matar essa saudade e ficar de muito chamego. Espero que em algum momento você esqueça suas dúvidas e acredite que eu te amo muitão e que quero você pra minha vida toda. Todo sempre. E até onde você achar que a existência vai...❤️❤️❤️❤️ beijao do seu Xuxuzinho.
+    </p>
+  </div>
+
+  <script>
+    const startDate = new Date("2023-09-10T00:00:00");
+
+    function updateTimer() {
+      const now = new Date();
+
+      let years = now.getFullYear() - startDate.getFullYear();
+      let months = now.getMonth() - startDate.getMonth();
+      let days = now.getDate() - startDate.getDate();
+
+      if (days < 0) {
+        months--;
+        const lastMonth = new Date(now.getFullYear(), now.getMonth(), 0);
+        days += lastMonth.getDate();
+      }
+
+      if (months < 0) {
+        years--;
+        months += 12;
+      }
+
+      const lastAnniversary = new Date(startDate);
+      lastAnniversary.setFullYear(startDate.getFullYear() + years);
+      lastAnniversary.setMonth(startDate.getMonth() + months);
+
+      const diff = now - lastAnniversary;
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      document.getElementById("timer").textContent =
+        `${years} ano${years !== 1 ? 's' : ''}, ${months} mês${months !== 1 ? 'es' : ''}, ${days} dia${days !== 1 ? 's' : ''}, ` +
+        `${hours} hora${hours !== 1 ? 's' : ''}, ${minutes} minuto${minutes !== 1 ? 's' : ''}, ` +
+        `${seconds} segundo${seconds !== 1 ? 's' : ''}`;
+    }
+
+    function toggleMusic() {
+      const music = document.getElementById("bgMusic");
+      if (music.paused) {
+        music.play();
+      } else {
+        music.pause();
+      }
+    }
+
+    function revealSurprise() {
+      const screen = document.getElementById("startScreen");
+      screen.style.opacity = "0";
+      setTimeout(() => {
+        screen.style.display = "none";
+      }, 1000);
+    }
+
+    setInterval(updateTimer, 1000);
+    updateTimer();
+  </script>
+</body>
+</html>
